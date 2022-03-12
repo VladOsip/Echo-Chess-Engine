@@ -12,4 +12,4 @@ This is my first experience with work of this kind, and some of its attributes i
 The engine is capable of basic MVV/LVA move ordering, killer heuristic, History Table (via FEN notation and hash code look-up), and basic move evaluation as well as reading a premade opening moves book (polyglot)
 In general, most of what the engine does is look-up.
 
-Although it can be played via console, I recommend using a suitable GUI (I user Winboard)
+Although it can be played via console, I recommend using a suitable GUI (I used Winboard)
