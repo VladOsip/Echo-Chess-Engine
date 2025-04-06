@@ -1,17 +1,42 @@
-# Echo-Chess-Engine
+# C Chess Engine
 
-An original chess engine that was inspired by Dr. Robert Hyatt's original chess engine "Crafty".
-This is my first experience with work of this kind, and some of its attributes include:
+An original Chess engine written in C, inspired by Dr. Robert Hyatt's "Crafty". The project explores classical chess engine design and optimization techniques, supporting both console play and GUI integration.
 
-* **120 square array board representation** - to handle out of bounds cases for piece movement and to avoid having to limit specific types of movements in specific positions on the board, and thus increasing computing time for the program considerably, I have chosen to work with a 120 square array board that contained within it the actual 64 squares that the game was played in.
+## Features
 
-* **Bitboards** - a type of data structure that allowed me to represent the positions of pieces on the board and look them up effectively by seperating the board into Files (A through H) and a ranks (1 to 8) and all of their positions could thus be contained within a single 64 bit representation of all of the positions acress the board by rank and file and lookup through bitwise operations alone.
+✅ 120-square array board representation  
+✅ Bitboard data structures for fast move generation  
+✅ Alpha-Beta pruning with Quiescence search  
+✅ MVV/LVA move ordering, killer move heuristic, and history table  
+✅ Zobrist hashing for position tracking  
+✅ Polyglot opening book support  
+✅ Two supported communication protocols (WinBoard/XBoard, custom CLI)
 
-* **Data structures and algorithms** - The engine made considerable use of hashing (via XOR) and hash tables (With a consitent replacement scheme for move search), search trees, arrays, Alpha-Beta search and quiescence search among others
+## Technical Overview
 
-*  **Communication protocols** - Supports two different communication protocols and thus allows it to run on multiple types of GUI 
+### Board Representation
 
-The engine is capable of basic MVV/LVA move ordering, killer heuristic, History Table (via FEN notation and hash code look-up), and basic move evaluation as well as reading a premade opening moves book (polyglot)
-In general, most of what the engine does is look-up.
+- **120-square mailbox** layout to simplify edge detection.
+- Core board operations are optimized using bitboards for each piece type.
 
-Although it can be played via console, I recommend using a suitable GUI (I used Winboard)
+### Search
+
+- Recursive **Alpha-Beta pruning** engine
+- **Quiescence search** to avoid horizon effect
+- Move ordering via **MVV/LVA**, **killer heuristic**, and **history tables**
+
+### Hashing
+
+- Implements **Zobrist hashing** with hash tables
+- Supports **FEN-based position lookups** for fast state recovery
+
+### Communication Protocols
+
+- Compatible with **WinBoard** and other GUI protocols
+- Also playable via terminal for debugging/testing
+
+## Build Instructions
+
+```sh
+make
+./chess_engine
